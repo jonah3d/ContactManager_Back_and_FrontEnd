@@ -1,4 +1,5 @@
 using ContactManagerApi.Data;
+using ContactManagerApi.Mappings;
 using ContactManagerApi.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<ContactDBContext>(options =>
 });
 
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();
 

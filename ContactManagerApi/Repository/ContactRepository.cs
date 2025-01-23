@@ -22,9 +22,9 @@ namespace ContactManagerApi.Repository
             return contact;
         }
 
-        public async Task<Contact> DeleteContactAsync(int id)
+        public async Task<Contact> DeleteContactAsync(string telephone)
         {
-         var existingContact =   await  context.Contacts.FirstOrDefaultAsync(c => c.Id == id);
+         var existingContact =   await  context.Contacts.FirstOrDefaultAsync(c => c.Phone == telephone);
 
             if(existingContact == null)
             {
@@ -49,9 +49,9 @@ namespace ContactManagerApi.Repository
             return contacts;
         }
 
-        public async Task<Contact> GetContactAsync(int id)
+        public async Task<Contact> GetContactAsync(string telephone)
         {
-            var existingContact =  await context.Contacts.FirstOrDefaultAsync(c => c.Id == id);
+            var existingContact =  await context.Contacts.FirstOrDefaultAsync(c => c.Phone == telephone);
             if (existingContact == null)
             {
                 return null;
@@ -59,10 +59,10 @@ namespace ContactManagerApi.Repository
             return existingContact;
         }
 
-        public async Task<Contact> UpdateContactAsync(int id,Contact contact)
+        public async Task<Contact> UpdateContactAsync(string telephone, Contact contact)
         {
 
-            var existingContact = await context.Contacts.FirstOrDefaultAsync(c => c.Id == id);
+            var existingContact = await context.Contacts.FirstOrDefaultAsync(c => c.Phone == telephone);
             if (existingContact == null)
             {
                 return null;
